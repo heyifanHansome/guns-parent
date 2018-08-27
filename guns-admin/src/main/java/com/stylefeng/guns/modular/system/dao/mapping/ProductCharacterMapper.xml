@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.ProductCharacterMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.ProductCharacter">
+        <id column="id" property="id" />
+        <result column="product_id" property="productId" />
+        <result column="title" property="title" />
+        <result column="ico" property="ico" />
+        <result column="type" property="type" />
+        <result column="content" property="content" />
+        <result column="sort" property="sort" />
+        <result column="commit_time" property="commitTime" />
+        <result column="base_id" property="baseId" />
+        <result column="creater" property="creater" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, product_id, title, ico, type, content, sort
+    </sql>
+
+    <select id="list" resultType="map">
+        select p.*,s.name  from product_character   p left join    sys_product s
+        on  s.id = p.product_id
+        <if test="condition != null and condition != ''">
+            where s.name like CONCAT('%',#{condition},'%') or p.title like CONCAT('%',#{condition},'%')
+        </if>
+        order by commit_time ASC
+    </select>
+
+</mapper>

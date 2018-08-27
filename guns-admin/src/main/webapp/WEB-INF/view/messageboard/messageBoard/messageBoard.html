@@ -1,0 +1,41 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>咨询留言表管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="condition" name="名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="MessageBoard.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="MessageBoardTableToolbar" role="group">
+                            @if(shiro.hasPermission("/messageBoard/add")){
+                                <!--<#button name="添加" icon="fa-plus" clickFun="MessageBoard.openAddMessageBoard()"/>-->
+                            @}
+                            @if(shiro.hasPermission("/messageBoard/update")){
+                                <!--<#button name="修改" icon="fa-edit" clickFun="MessageBoard.openMessageBoardDetail()" space="true"/>-->
+                            @}
+                            @if(shiro.hasPermission("/messageBoard/delete")){
+                                <!--<#button name="导出" icon="fa-remove" clickFun="MessageBoard.delete()" space="true"/>-->
+                            @}
+                        </div>
+                        <#table id="MessageBoardTable"/>
+                        <div id="heyifan">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/messageboard/messageBoard/messageBoard.js"></script>
+@}

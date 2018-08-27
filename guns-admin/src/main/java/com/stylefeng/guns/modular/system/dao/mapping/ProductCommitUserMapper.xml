@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.ProductCommitUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.ProductCommitUser">
+        <id column="id" property="id" />
+        <result column="commit_id" property="commitId" />
+        <result column="product_id" property="productId" />
+        <result column="user_id" property="userId" />
+        <result column="commit_time" property="commitTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, commit_id, product_id, user_id, commit_time
+    </sql>
+
+</mapper>

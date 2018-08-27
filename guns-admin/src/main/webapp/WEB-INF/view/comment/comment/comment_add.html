@@ -1,0 +1,35 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+
+                <div class="col-sm-6 b-r">
+                    <#input id="id" name="" type="hidden"/>
+                    <#input id="myProductId" name="云科产品" underline="true"/>
+                    <#input id="productId" name="其他产品" underline="true"/>
+                    <#input id="userId" name="用户id"/>
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="deng" name="" type="hidden"/>
+                    <#input id="adminName" name="管理员" underline="true"/>
+                    <#input id="content" name="评论内容" underline="true"/>
+                    <#input id="commitTime" name="评论时间" underline="true"/>
+                    <#input id="checkUp" name="审核" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="CommentInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="CommentInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/comment/comment/comment_info.js"></script>
+@}

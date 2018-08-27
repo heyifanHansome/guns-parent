@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.MessageBoardMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.MessageBoard">
+        <id column="id" property="id"/>
+        <result column="tag_name" property="tagName"/>
+        <result column="content" property="content"/>
+        <result column="company_name" property="companyName"/>
+        <result column="phone" property="phone"/>
+        <result column="city" property="city"/>
+        <result column="province" property="province"/>
+        <result column="Contact" property="Contact"/>
+        <result column="commit_time" property="commitTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tag_id, content, company_name, phone, city, province, Contact, commit_time
+    </sql>
+
+
+    <!--<select id="list" resultType="map">-->
+        <!--<if test="condition != null and condition != ''">-->
+            <!--select * from sys_message_board-->
+            <!--where content like CONCAT ('%', #{condition} , '%' )-->
+            <!--and content in(select content from sys_message_board where-->
+            <!--<foreach collection="tipsNames" index="index" item="i" open="(" separator="or" close=")">-->
+                <!--tag_name like CONCAT ('%', #{i} , '%' )-->
+            <!--</foreach>-->
+            <!--)-->
+            <!--order by commit_time ASC-->
+        <!--</if>-->
+        <!--select * from sys_message_board-->
+        <!--where-->
+        <!--<foreach collection="tipsNames" index="index" item="i" open="(" separator="or" close=")">-->
+            <!--tag_name like CONCAT ('%', #{i} , '%' )-->
+        <!--</foreach>-->
+        <!--order by commit_time ASC-->
+    <!--</select>-->
+
+    <select id="list" resultType="map">
+        select * from sys_message_board
+            <where>
+                <foreach collection="tipsNames" index="index" item="i" open="(" separator="or" close=")">
+                   FIND_IN_SET(#{i},tag_name)
+                </foreach>
+                <if test="condition != null and condition != ''">
+                and   content like CONCAT('%',#{condition},'%')
+                </if>
+            </where>
+            order by commit_time ASC
+    </select>
+
+</mapper>

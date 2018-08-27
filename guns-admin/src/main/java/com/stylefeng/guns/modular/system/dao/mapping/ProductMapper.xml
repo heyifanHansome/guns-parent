@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.ProductMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.Product">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="picture" property="picture" />
+        <result column="category_id" property="categoryId" />
+        <result column="type" property="type" />
+        <result column="commit_time" property="commitTime" />
+        <result column="base_id" property="baseId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, picture, category_id, type, commit_time
+    </sql>
+
+
+    <select id="list" resultType="map">
+        select * from sys_product
+        <if test="condition != null and condition != ''">
+            where name like CONCAT('%',#{condition},'%') or type like CONCAT('%',#{condition},'%')
+        </if>
+        order by commit_time ASC
+    </select>
+
+
+
+</mapper>

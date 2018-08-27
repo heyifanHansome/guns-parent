@@ -1,0 +1,33 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="产品点赞表ID" underline="true"/>
+                            <#input id="otherProductId" name="第三方商品id" underline="true"/>
+                            <#input id="userId" name="用户id" underline="true"/>
+                            <#input id="commitTime" name="更新时间"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="productId" name="自己产品id" underline="true"/>
+                            <#input id="newId" name="新闻表id" underline="true"/>
+                            <#input id="productName" name="云科商品名称" underline="true"/>
+                            <#input id="productImgUrl" name="云科产品图片" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="OtherProductCommitInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="OtherProductCommitInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/giveLke/otherProductCommit/otherProductCommit_info.js"></script>
+@}

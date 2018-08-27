@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.CommentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.Comment">
+        <id column="id" property="id" />
+        <result column="my_product_id" property="myProductId" />
+        <result column="product_id" property="productId" />
+        <result column="user_id" property="userId" />
+        <result column="admin_id" property="adminId" />
+        <result column="content" property="content" />
+        <result column="commit_time" property="commitTime" />
+        <result column="check_up" property="checkUp" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, my_product_id, product_id, user_id, admin_id, content, commit_time, check_up
+    </sql>
+
+
+    <select id="list" resultType="map">
+        select * from sys_comment
+        <if test="condition != null and condition != ''">
+            where content like CONCAT('%',#{condition},'%') or product_name like CONCAT('%',#{condition},'%',)
+        </if>
+        order by commit_time ASC
+    </select>
+
+
+
+
+</mapper>
